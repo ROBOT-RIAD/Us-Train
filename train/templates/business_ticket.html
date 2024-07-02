@@ -1,0 +1,49 @@
+{% extends "cores/base.html" %}
+
+{% load range_tags %}
+
+{% block title %}
+    TICKET BOOKING
+{% endblock %}
+
+{% block body %}
+<div class="mt-10 flex flex-col items-center justify-center space-y-4">
+    <div class="space-x-4">
+        <a href="{% url 'royal'  %}" class="mx-2 inline-block font-medium text-sm px-4 py-2 leading-none bg-blue-900 rounded text-white border-white hover:border-transparent hover:text-dark hover:bg-red-700 mt-4 lg:mt-0">ROYAL TICKET</a>
+        <a href="{% url 'business' %}" class="mx-2 inline-block font-medium text-sm px-4 py-2 leading-none bg-blue-900 rounded text-white border-white hover:border-transparent hover:text-dark hover:bg-red-700 mt-4 lg:mt-0">BUSINESS TICKET</a>
+        <a href="{% url 'economy' %}" class="mx-2 inline-block font-medium text-sm px-4 py-2 leading-none bg-blue-900 rounded text-white border-white hover:border-transparent hover:text-dark hover:bg-red-700 mt-4 lg:mt-0">ECONOMY TICKET</a>
+    </div> 
+
+    <h1 class="text-center mt-10 text-3xl font-bold">Business Ticket</h1>
+
+    <h1 class="text-center text-blue-900 mt-10 text-3xl font-bold">Train Coach No : 3</h1>
+    <div class="flex flex-wrap justify-center mt-4">
+        {% for seat in 21|range_filter %}
+        <div class="flex col-md-3"> <!-- col-md-3 for medium screens (Bootstrap grid) -->
+            <div>
+                {% if seat in booked_seats.3 %}
+                    <h1 class="mx-4 mt-2 bg-red-900 border border-gray-300 p-2 h-20 w-20 flex items-center justify-center">{{ seat }}</h1>
+                {% else %}
+                    <h1 class="mx-4 mt-2 bg-green-600 border border-gray-300 p-2 h-20 w-20 flex items-center justify-center">{{ seat }}</h1>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+    <h1 class="text-center text-blue-900 mt-10 text-3xl font-bold">Train Coach No : 4</h1>
+    <div class="flex flex-wrap justify-center mt-4">
+        {% for seat in 21|range_filter %}
+        <div class="flex col-md-3"> <!-- col-md-3 for medium screens (Bootstrap grid) -->
+            <div>
+                {% if seat in booked_seats.4 %}
+                    <h1 class="mx-4 mt-2 bg-red-900 border border-gray-300 p-2 h-20 w-20 flex items-center justify-center">{{ seat }}</h1>
+                {% else %}
+                    <h1 class="mx-4 mt-2 bg-green-600 border border-gray-300 p-2 h-20 w-20 flex items-center justify-center">{{ seat }}</h1>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+{% endblock %}
